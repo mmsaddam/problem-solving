@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' buildActiveScheme='true'>
+    <pages>
+        <page name='Codality'/>
+        <page name='LocalAuth'/>
+        <page name='TargetSum'/>
+        <page name='Fabonacci'/>
+        <page name='GridTravellers'/>
+        <page name='PowerSet'/>
+        <page name='OddOccurance'/>
+        <page name='FrogRiver'/>
+        <page name='TapeEquilbriam'/>
+        <page name='MaxCounters'/>
+        <page name='GeometricRangeQuery'/>
+        <page name='PassingCars'/>
+        <page name='MinAvgTwoSlices'/>
+        <page name='MaxSliceSum'/>
+        <page name='MaxDoubleSliceSum'/>
+        <page name='MaxProfit'/>
+        <page name='ReverseArray'/>
+        <page name='GenerateDocument'/>
+        <page name='Calender'/>
+        <page name='PalindromCheck'/>
+        <page name='CommonChild'/>
+        <page name='Substring'/>
+        <page name='XL-columnNumber'/>
+        <page name='MinimumBribes'/>
+        <page name='RomanToInt'/>
+        <page name='SumOfLinkedLists'/>
+        <page name='MergeTwoSortedArray'/>
+    </pages>
+</playground>
