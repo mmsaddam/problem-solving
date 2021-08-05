@@ -9,3 +9,5 @@ public class BST {
 		self.value = value
 	}
 }
+
+

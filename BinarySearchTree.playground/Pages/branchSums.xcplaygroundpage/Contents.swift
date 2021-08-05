@@ -1,4 +1,7 @@
-import UIKit
+	//: [Previous](@previous)
+
+import Foundation
+
 
 var tree = BST(value: 1)
 tree.left = BST(value: 2)
