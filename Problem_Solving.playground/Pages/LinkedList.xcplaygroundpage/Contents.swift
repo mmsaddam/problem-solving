@@ -116,7 +116,6 @@ class LinkedList {
 	}
 	
 	func reversed() {
-		
 		var prevNode: Node? = nil
 		var nextNode: Node? = nil
 		var currentNode = head
@@ -132,21 +131,22 @@ class LinkedList {
 		head = prevNode
 	}
 	
-//	func printReversed() {
-//		reversedList(head)
-//	}
-//	
-//	private func reversedList(_ node: Node?) {
-//		var pointer = node
-//		
-//		if pointer == nil {
-//			return
-//		}
-//		
-//		reversedList(pointer?.next)
-//		
-//		print(pointer!.value)
-//	}
+	func reversed(head: Node?) {
+		self.head = reccursiveReversed(head)
+	}
+	
+	private func reccursiveReversed(_ head: Node?) -> Node? {
+		print("CallingHead \(head?.value)")
+		if head == nil || head?.next == nil {
+			return head
+		}
+		
+		let newHead = reccursiveReversed(head?.next)
+		head?.next?.next = head
+		head?.next = nil
+		print("Retrun newHead \(newHead?.value), head \(head?.value)")
+		return newHead
+	}
 	
 	func printList() {
 		var node = head
@@ -172,27 +172,33 @@ list.appendNode(node: nodeTwo)
 list.appendNode(node: nodeThree)
 list.appendNode(node: nodeFour)
 
-list.printList() // [1, 2,  3,  4]
+//list.printList() // [1, 2,  3,  4]
 
 list.removeNode(node: nodeThree)
-list.printList()  // [1, 2, 4]
+//list.printList()  // [1, 2, 4]
 
 list.insertAfter(node: nodeTwo, nodeToInsert: nodeThree) // [1, 2, 3, 4]
 list.insertAfter(node: nodeOne, nodeToInsert: nodeFive) // [1, 5, 2, 3, 4]
 list.insertAfter(node: nodeFour, nodeToInsert: nodeSix) // [1, 5, 2, 3, 4, 6]
 list.insertAfter(node: nodeFour, nodeToInsert: nodeFive) // [1, 5, 2, 3, 4, 5, 6]
-list.printList() // [1, 5, 2, 3, 4, 5, 6]
+//list.printList() // [1, 5, 2, 3, 4, 5, 6]
 
 list.removeNode(node: nodeTwo)
 list.removeNode(node: nodeThree)
 list.removeNode(node: nodeSix)
-list.printList() // [1, 4, 5]
+//list.printList() // [1, 4, 5]
 
 list.insertBefore(node: nodeFour, nodeToInsert: nodeTwo)
 list.insertBefore(node: nodeFive, nodeToInsert: nodeSix)
 list.insertBefore(node: nodeOne, nodeToInsert: nodeThree)
-list.printList() // [3, 1, 2, 4, 6, 5]
+//list.printList() // [3, 1, 2, 4, 6, 5]
 
 list.reversed()
+list.printList()
+
+let head = list.head
+
+list.reversed(head: head)
+
 list.printList()
 
