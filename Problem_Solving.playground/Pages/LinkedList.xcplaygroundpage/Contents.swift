@@ -202,3 +202,46 @@ list.reversed(head: head)
 
 list.printList()
 
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     public var val: Int
+ *     public var next: ListNode?
+ *     public init() { self.val = 0; self.next = nil; }
+ *     public init(_ val: Int) { self.val = val; self.next = nil; }
+ *     public init(_ val: Int, _ next: ListNode?) { self.val = val; self.next = next; }
+ * }
+ */
+
+class Solution {
+	func addTwoNumbers(_ l1: Node?, _ l2: Node?) -> Node? {
+		let revList1 = reverseList(l1)
+		let revList2 = reverseList(l2)
+		return nil
+	}
+	
+	func listToInt(_ node: Node?) -> Int {
+		var idx = 0
+		var sum = 0
+		var currentNode = node
+		while currentNode != nil {
+			let value = currentNode!.value
+			sum = sum + Int(pow(Double(10), Double(idx)))
+			idx += 1
+		}
+		return sum
+	}
+	
+	func reverseList(_ head: Node?) -> Node? {
+		if head == nil || head?.next == nil {
+			return nil
+		}
+		
+		let newHead = reverseList(head?.next)
+		head?.next?.next = head
+		head?.next = nil
+		
+		return newHead
+	}
+}

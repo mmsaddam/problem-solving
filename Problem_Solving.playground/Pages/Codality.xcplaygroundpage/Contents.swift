@@ -1,68 +1,91 @@
 //: [Previous](@previous)
 
 import Foundation
+
 class Solution {
-	func addBinary(_ a: String, _ b: String) -> String {
-		var bS1: [Int]
-		var bS2: [Int]
-		if a.count >= b.count {
-			bS1 = a.map { Int(String($0))! }
-			bS2 = b.map { Int(String($0))! }
-		} else {
-			bS1 = b.map { Int(String($0))! }
-			bS2 = a.map { Int(String($0))! }
-		}
+	func findKthPositive(_ arr: [Int], _ k: Int) -> Int {
+		var idx = 0
+		var counter = 1
+		var missingAry = [Int]()
 		
-		let sizeDiff = abs(bS2.count - bS1.count)
-		
-		var previousCarry = 0
-		var result = ""
-		print(bS1, bS2)
-		
-		for i in stride(from: bS2.count - 1, through: 0, by: -1) {
-			let sum = binarySum(bS1[i + sizeDiff],bS2[i], previousCarry)
-			result += String(sum.0)
-			previousCarry = sum.1
+		while missingAry.count < k {
+			if idx < arr.count, arr[idx] == counter {
+			  idx += 1
+		  } else {
+			  missingAry.append(counter)
+		  }
+			counter += 1
 		}
-		
-		var i = sizeDiff - 1
-		while i >= 0 {
-			let sum = binarySum(bS1[i], 0, previousCarry)
-			result += String(sum.0)
-			previousCarry = sum.1
-			i -= 1
-		}
-		
-		if previousCarry == 1 {
-			result += "\(1)"
-		}
-		return String(result.reversed())
-	}
-	func binarySum(_ a: Int, _ b: Int, _ c: Int) -> (Int, Int) {
-		let sum = a + b
-		if sum == 2 {
-			if c == 1 {
-				return (1, 1)
-			} else {
-				return (0, 1)
-			}
-		} else if sum == 1 {
-			if c == 1 {
-				return (0, 1)
-			} else {
-				return (1, 0)
-			}
-		} else {
-			if c == 1 {
-				return (1, 0)
-			} else {
-				return (0, 0)
-			}
-		}
+		print(missingAry)
+		return missingAry[k - 1]
 	}
 }
 
-Solution().addBinary("1", "111")
+Solution().findKthPositive([1, 2, 3, 4], 2)
+
+
+//class Solution {
+//	func addBinary(_ a: String, _ b: String) -> String {
+//		var bS1: [Int]
+//		var bS2: [Int]
+//		if a.count >= b.count {
+//			bS1 = a.map { Int(String($0))! }
+//			bS2 = b.map { Int(String($0))! }
+//		} else {
+//			bS1 = b.map { Int(String($0))! }
+//			bS2 = a.map { Int(String($0))! }
+//		}
+//
+//		let sizeDiff = abs(bS2.count - bS1.count)
+//
+//		var previousCarry = 0
+//		var result = ""
+//		print(bS1, bS2)
+//
+//		for i in stride(from: bS2.count - 1, through: 0, by: -1) {
+//			let sum = binarySum(bS1[i + sizeDiff],bS2[i], previousCarry)
+//			result += String(sum.0)
+//			previousCarry = sum.1
+//		}
+//
+//		var i = sizeDiff - 1
+//		while i >= 0 {
+//			let sum = binarySum(bS1[i], 0, previousCarry)
+//			result += String(sum.0)
+//			previousCarry = sum.1
+//			i -= 1
+//		}
+//
+//		if previousCarry == 1 {
+//			result += "\(1)"
+//		}
+//		return String(result.reversed())
+//	}
+//	func binarySum(_ a: Int, _ b: Int, _ c: Int) -> (Int, Int) {
+//		let sum = a + b
+//		if sum == 2 {
+//			if c == 1 {
+//				return (1, 1)
+//			} else {
+//				return (0, 1)
+//			}
+//		} else if sum == 1 {
+//			if c == 1 {
+//				return (0, 1)
+//			} else {
+//				return (1, 0)
+//			}
+//		} else {
+//			if c == 1 {
+//				return (1, 0)
+//			} else {
+//				return (0, 0)
+//			}
+//		}
+//	}
+//}
+
+//Solution().addBinary("1", "111")
 
 
 //class Solution {
