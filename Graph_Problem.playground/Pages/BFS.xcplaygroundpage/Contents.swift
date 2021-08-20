@@ -1,7 +1,7 @@
 //: [Previous](@previous)
 
 import Foundation
-import Darwin
+
 
 class Node {
 	let name: String
@@ -30,24 +30,31 @@ func populateGraph() -> Node {
 	return graph
 }
 
-let dfsArray = ["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"]
+let bfsSequence = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
-func dfs(_ root: Node, result: inout [String]) {
-	result.append(root.name)
-	for child in root.children {
-		dfs(child, result: &result)
+func bfs(_ root: Node) -> [String] {
+	var queue = [Node]()
+	queue.append(root)
+	
+	var result = [String]()
+	
+	while queue.count > 0 {
+		let front = queue.removeFirst()
+		result.append(front.name)
+		queue.append(contentsOf: front.children)
 	}
+	
+	return result
 }
 
-var result = [String]()
+
 let graph = populateGraph()
 
-dfs(graph, result: &result)
-
-if result == dfsArray {
-	print("True")
-} else {
-	print("False")
-}
+let bfsResult = bfs(graph)
+print(bfsSequence)
+print(bfsResult)
+print(bfsSequence == bfsResult)
 
 print("end")
+
+//: [Next](@next)
